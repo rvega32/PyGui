@@ -21,7 +21,7 @@ def clear_screen():
 
 
 def start_rps_game():
-    tk.Label(root, text="Rock, Paper, Scissors", font=("Arial", 16)).pack(pady=10)
+    tk.Label(root, text="Rock, Paper, Scissors", font=("Times New Roman", 25)).pack(pady=10)
 
     def play_rps(user_choice):
         options = ["Rock", "Paper", "Scissors"]
@@ -49,8 +49,8 @@ def start_rps_game():
 
 
 def start_number_game():
-    tk.Label(root, text="Number Guessing Game", font=("Arial", 16)).pack(pady=10)
-    tk.Label(root, text="Guess a number between 1 and 10").pack()
+    tk.Label(root, text="Number Guessing Game", font=("Times New Roman", 20)).pack(pady=10)
+    tk.Label(root, text="Guess a number between 1 and 100").pack()
 
     entry = tk.Entry(root)
     entry.pack(pady=5)
@@ -58,13 +58,13 @@ def start_number_game():
     def check_guess():
         try:
             guess = int(entry.get())
-            if guess < 1 or guess > 10:
+            if guess < 1 or guess > 100:
                 raise ValueError
         except ValueError:
             messagebox.showerror("Invalid input", "Enter a number between 1 and 10")
             return
 
-        number = random.randint(1, 10)
+        number = random.randint(1, 100)
         if guess == number:
             messagebox.showinfo("Result", f"Correct! The number was {number}")
         else:
