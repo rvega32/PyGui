@@ -2,11 +2,13 @@ import tkinter as tk
 from tkinter import messagebox
 import random
 
+# Main window setup
 root = tk.Tk()
 root.title("Game Hub")
 root.geometry("500x400")
-root.configure(bg="#f2f2f2") 
+root.configure(bg="#f2f2f2")  # Light gray background
 
+# Load images (place in the same folder)
 rock_img = tk.PhotoImage(file="rock.png")
 paper_img = tk.PhotoImage(file="paper.png")
 scissors_img = tk.PhotoImage(file="scissors.png")
@@ -44,6 +46,7 @@ def start_rps_game():
 
         messagebox.showinfo("Result", f"You chose {user_choice}\nComputer chose {computer_choice}\n{result}")
 
+    # Buttons with images
     frame = tk.Frame(root, bg="#f2f2f2")
     frame.pack(pady=20)
 
@@ -51,6 +54,7 @@ def start_rps_game():
     tk.Button(frame, image=paper_img, command=lambda: play_rps("Paper"), bg="#f2f2f2").grid(row=0, column=1, padx=10)
     tk.Button(frame, image=scissors_img, command=lambda: play_rps("Scissors"), bg="#f2f2f2").grid(row=0, column=2, padx=10)
 
+    # Switch button
     tk.Button(root, text="Switch to Number Guessing Game", command=switch_to_number_game,
               bg="#4CAF50", fg="white", font=("Arial", 12)).pack(pady=20)
 
@@ -80,5 +84,6 @@ def start_number_game():
     tk.Button(root, text="Back to Rock Paper Scissors", command=switch_to_rps,
               bg="#FF5722", fg="white", font=("Arial", 12)).pack(pady=20)
 
+# Start with RPS game
 switch_to_rps()
 root.mainloop()
