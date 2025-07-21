@@ -4,7 +4,12 @@ import random
 
 root = tk.Tk()
 root.title("Game Hub")
-root.geometry("400x300")
+root.geometry("500x400")
+root.configure(bg="#f2f2f2") 
+
+rock_img = tk.PhotoImage(file="rock.png")
+paper_img = tk.PhotoImage(file="paper.png")
+scissors_img = tk.PhotoImage(file="scissors.png")
 
 def switch_to_rps():
     clear_screen()
@@ -14,14 +19,12 @@ def switch_to_number_game():
     clear_screen()
     start_number_game()
 
-
 def clear_screen():
     for widget in root.winfo_children():
         widget.destroy()
 
-
 def start_rps_game():
-    tk.Label(root, text="Rock, Paper, Scissors", font=("Times New Roman", 25)).pack(pady=10)
+    tk.Label(root, text="Rock, Paper, Scissors", font=("Arial", 24, "bold"), fg="#333", bg="#f2f2f2").pack(pady=10)
 
     def play_rps(user_choice):
         options = ["Rock", "Paper", "Scissors"]
@@ -41,16 +44,19 @@ def start_rps_game():
 
         messagebox.showinfo("Result", f"You chose {user_choice}\nComputer chose {computer_choice}\n{result}")
 
-    tk.Button(root, text="Rock", command=lambda: play_rps("Rock")).pack(pady=2)
-    tk.Button(root, text="Paper", command=lambda: play_rps("Paper")).pack(pady=2)
-    tk.Button(root, text="Scissors", command=lambda: play_rps("Scissors")).pack(pady=2)
+    frame = tk.Frame(root, bg="#f2f2f2")
+    frame.pack(pady=20)
 
-    tk.Button(root, text="Switch to Number Guessing Game", command=switch_to_number_game).pack(pady=20)
+    tk.Button(frame, image=rock_img, command=lambda: play_rps("Rock"), bg="#f2f2f2").grid(row=0, column=0, padx=10)
+    tk.Button(frame, image=paper_img, command=lambda: play_rps("Paper"), bg="#f2f2f2").grid(row=0, column=1, padx=10)
+    tk.Button(frame, image=scissors_img, command=lambda: play_rps("Scissors"), bg="#f2f2f2").grid(row=0, column=2, padx=10)
 
+    tk.Button(root, text="Switch to Number Guessing Game", command=switch_to_number_game,
+              bg="#4CAF50", fg="white", font=("Arial", 12)).pack(pady=20)
 
 def start_number_game():
-    tk.Label(root, text="Number Guessing Game", font=("Times New Roman", 20)).pack(pady=10)
-    tk.Label(root, text="Guess a number between 1 and 100").pack()
+    tk.Label(root, text="Number Guessing Game", font=("Arial", 20, "bold"), fg="#333", bg="#f2f2f2").pack(pady=10)
+    tk.Label(root, text="Guess a number between 1 and 100", bg="#f2f2f2").pack()
 
     entry = tk.Entry(root)
     entry.pack(pady=5)
@@ -61,7 +67,7 @@ def start_number_game():
             if guess < 1 or guess > 100:
                 raise ValueError
         except ValueError:
-            messagebox.showerror("Invalid input", "Enter a number between 1 and 10")
+            messagebox.showerror("Invalid input", "Enter a number between 1 and 100")
             return
 
         number = random.randint(1, 100)
@@ -70,8 +76,9 @@ def start_number_game():
         else:
             messagebox.showinfo("Result", f"Wrong! The number was {number}")
 
-    tk.Button(root, text="Guess", command=check_guess).pack(pady=5)
-    tk.Button(root, text="Back to Rock Paper Scissors", command=switch_to_rps).pack(pady=20)
+    tk.Button(root, text="Guess", command=check_guess, bg="#2196F3", fg="white", font=("Arial", 12)).pack(pady=5)
+    tk.Button(root, text="Back to Rock Paper Scissors", command=switch_to_rps,
+              bg="#FF5722", fg="white", font=("Arial", 12)).pack(pady=20)
 
 switch_to_rps()
 root.mainloop()
