@@ -1,2 +1,0 @@
-# guessinggame
-random generator
