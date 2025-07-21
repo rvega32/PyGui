@@ -67,7 +67,6 @@ def start_number_game():
             messagebox.showinfo("Result", f"Correct! The number was {number}")
         else:
             messagebox.showinfo("Result", f"Wrong! The number was {number}")
-
     tk.Button(root, text="Guess", command=check_guess, bg="#ffaa00", width=20).pack(pady=10)
     tk.Button(root, text="Back to Rock Paper Scissors", command=switch_to_rps, bg="#888", width=30).pack(pady=20)
 
