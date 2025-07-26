@@ -5,7 +5,7 @@ import random
 root = tk.Tk()
 root.title("Game Hub")
 root.geometry("400x400")
-root.configure(bg="#c5e384")  # Matcha green background
+root.configure(bg="#c5e384") 
 
 def switch_to_rps():
     clear_screen()
